@@ -1,24 +1,9 @@
-/* Requires the Docker Pipeline plugin */
 pipeline {
-    agent { 
-        docker { 
-            image 'node:20.11.1-alpine3.19'
-             // Run the container on the node specified at the
-                    // top-level of the Pipeline, in the same workspace,
-                    // rather than on a new node entirely:
-            reuseNode true
-                   
-                   }
-          }
-    environment {
-
-    PATH = "C:\\WINDOWS\\SYSTEM32"
-
-     }
+    agent any
     stages {
-        stage('build') {
+        stage('Build') { 
             steps {
-                bat 'mvn --version'
+                bat 'mvn -B -DskipTests clean package' 
             }
         }
     }
