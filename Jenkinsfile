@@ -10,18 +10,18 @@ pipeline {
             }
         }
 
-         stage('Test') {
-            steps {
-                echo 'Testing stuff...'
-            }
-        }
-
         stage('Deploy') {
           steps {
                sh """
                echo "Deploying Code"
                """
            }
+        }
+        
+         stage('Test') {
+            steps {
+                echo 'Testing stuff...'
+            }
         }
 
     }
